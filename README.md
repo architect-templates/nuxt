@@ -25,7 +25,7 @@ git clone https://github.com/architect-team/template-nuxt-tsx.git
 npm install
 ```
 
-### Run w/ Architect
+### Run with Architect
 
 I like to debug in more production-ready environments to ensure that my projects can be promoted to production more quickly. To accomplish this, I use [Architect](http://docs.architect.io/), which allows me to start my application with the following command:
 
