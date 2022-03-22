@@ -35,21 +35,6 @@ $ architect dev architect.yml
 
 Unlike the prior steps, this deploy generates an API gateway even for testing, and the application will be available at `http://app.arc.localhost`.
 
-## Deploying to the cloud
-
-Once I'm ready to go live, I can deploy my application in a similar manner to a Kubernetes cluster.
-
-Want to try deploying this to a cloud environment? Architect's got you covered there too! Just click the button below to deploy it to a sample Kubernetes cluster powered by Architect Cloud:
-
-[![Deploy Button](https://docs.architect.io/deploy-button.svg)](https://cloud.architect.io/examples/components/nuxt/deploy?tag=latest&interface=app%3Aapp)
-
-Alternatively, if you're already familiar with Architect and have your own environment registered, you can use the command below instead:
-
-```sh
-$ architect deploy examples/nuxt:latest -a <account-name> -e <environment-name> -i app:app
-```
-
-
 ## Larger projects
 
 Want to see a larger project using this same boilerplate? Check out the following:
