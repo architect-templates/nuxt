@@ -25,53 +25,30 @@ git clone https://github.com/architect-team/template-nuxt-tsx.git
 npm install
 ```
 
-### Run in development
-
-```sh
-npm run dev
-```
-
-Once running, the application will be available at http://localhost:3000
-
-### Build and run for production
-
-```sh
-npm run build
-npm start
-```
-
-Once running, the application will be available at http://localhost:3000
-
-### Build and run w/ Docker
-
-```sh
-docker build . -t nuxt-tsx-starter
-docker run -p 3000:3000 nuxt-tsx-starter
-```
-
-Once running, the application will be available at http://localhost:3000
-
 ### Run w/ Architect
 
 I like to debug in more production-ready environments to ensure that my projects can be promoted to production more quickly. To accomplish this, I use [Architect](http://docs.architect.io/), which allows me to start my application with the following command:
 
 ```sh
-$ architect deploy --local ./architect.yml -i app:app
+$ architect dev architect.yml
 ```
 
-Unlike the prior steps, this deploy generates an API gateway even for testing, and the application will be available at http://app.arc.localhost. Once I'm ready to go live, I can push and deploy my application in a similar manner to a Kubernetes or ECS cluster:
+Unlike the prior steps, this deploy generates an API gateway even for testing, and the application will be available at `http://app.arc.localhost`.
+
+## Deploying to the cloud
+
+Once I'm ready to go live, I can deploy my application in a similar manner to a Kubernetes cluster.
+
+Want to try deploying this to a cloud environment? Architect's got you covered there too! Just click the button below to deploy it to a sample Kubernetes cluster powered by Architect Cloud:
+
+[![Deploy Button](https://docs.architect.io/deploy-button.svg)](https://cloud.architect.io/examples/components/nuxt/deploy?tag=latest&interface=app%3Aapp)
+
+Alternatively, if you're already familiar with Architect and have your own environment registered, you can use the command below instead:
 
 ```sh
-# Push the code to the registry
-$ architect register ./architect.yml --tag latest
-
-# Create my environment
-$ architect platform:create --type "kubernetes" --account "<my-account>" my-platform
-$ architect environment:create --account "<my-account>" --platform "my-platform" production
-
-# Deploy
-$ architect deploy --account "<my-account>" --environment "production" architect/template-nuxt-tsx:latest
+$ architect deploy examples/nuxt:latest -a <account-name> -e <environment-name> -i app:app
 ```
+
 
 ## Larger projects
 
