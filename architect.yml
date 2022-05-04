@@ -20,7 +20,7 @@ services:
           DEBUG: 'true'
     environment:
       BASE_URL: ${{ ingresses.app.url }}
-      APP_NAME: ${{ parameters.APP_NAME }}
+      APP_NAME: ${{ secrets.APP_NAME }}
     interfaces:
       main: 3000
     ${{ if architect.environment == 'local' }}:
