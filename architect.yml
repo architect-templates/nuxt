@@ -6,7 +6,7 @@ keywords:
   - jsx
   - tsx
 
-parameters:
+secrets:
   APP_NAME:
     description: Name of the application to use in page metadata
     default: Nuxt TSX Starter
