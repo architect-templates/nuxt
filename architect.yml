@@ -23,6 +23,10 @@ services:
       APP_NAME: ${{ secrets.APP_NAME }}
     interfaces:
       main: 3000
+    liveness_probe:
+      command: curl --fail localhost:3000 || exit 1
+      interval: 30s
+      failure_threshold: 3
     ${{ if architect.environment == 'local' }}:
       command: npm run dev
       volumes:
