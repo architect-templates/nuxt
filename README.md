@@ -16,24 +16,25 @@ I've put together this project to help myself and others setup new web applicati
 
 ![Screenshot](./screenshot.png)
 
-## Getting started
+In this example, we've written a component spec (the `architect.yml` file) that defines a component to run a Nuxt based web application.
 
-### Clone and install dependencies
+[Learn more about the architect.yml file](//docs.architect.io/components/architect-yml/)
 
-```sh
-git clone https://github.com/architect-team/template-nuxt-tsx.git
-npm install
-```
-
-### Run with Architect
-
-I like to debug in more production-ready environments to ensure that my projects can be promoted to production more quickly. To accomplish this, I use [Architect](https://docs.architect.io/), which allows me to start my application with the following command:
+## Running locally
 
 ```sh
-$ architect dev architect.yml
+# Clone the repository and navigate to this directory
+$ git clone https://github.com/architect-templates/nuxt.git
+$ cd ./nuxt
+
+# Register the component to the local registry
+$ architect link .
+
+# Deploy locally using the dev command
+$ architect dev .
 ```
 
-Unlike the prior steps, this deploy generates an API gateway even for testing, and the application will be available at `http://app.arc.localhost`.
+Once the deploy has completed, you can reach your new service by going to http://app.arc.localhost/.
 
 ## Larger projects
 
