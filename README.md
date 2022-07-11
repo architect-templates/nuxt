@@ -18,7 +18,7 @@ I've put together this project to help myself and others setup new web applicati
 
 In this example, we've written a component spec (the `architect.yml` file) that defines a component to run a Nuxt based web application.
 
-[Learn more about the architect.yml file](//docs.architect.io/configuration)
+[Learn more about the architect.yml file](//docs.architect.io/components/architect-yml/)
 
 ## Running locally
 
