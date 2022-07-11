@@ -21,8 +21,9 @@ I've put together this project to help myself and others setup new web applicati
 ### Clone and install dependencies
 
 ```sh
-git clone https://github.com/architect-team/template-nuxt-tsx.git
-npm install
+$ git clone https://github.com/architect-templates/nuxt.git
+$ cd ./nuxt
+$ npm install
 ```
 
 ### Run with Architect
@@ -30,7 +31,7 @@ npm install
 I like to debug in more production-ready environments to ensure that my projects can be promoted to production more quickly. To accomplish this, I use [Architect](https://docs.architect.io/), which allows me to start my application with the following command:
 
 ```sh
-$ architect dev architect.yml
+$ architect dev .
 ```
 
 Unlike the prior steps, this deploy generates an API gateway even for testing, and the application will be available at `http://app.arc.localhost`.
