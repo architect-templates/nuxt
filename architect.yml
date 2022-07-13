@@ -15,16 +15,18 @@ services:
   app:
     build:
       context: ./
-      ${{ if architect.environment == 'local' }}:
-        args:
-          DEBUG: 'true'
+      args:
+        NODE_ENV: production
     environment:
       BASE_URL: ${{ ingresses.app.url }}
       APP_NAME: ${{ secrets.APP_NAME }}
     interfaces:
       main: 3000
-    ${{ if architect.environment == 'local' }}:
+    debug:
       command: npm run dev
+      build:
+        args:
+          NODE_ENV: development
       volumes:
         src:
           host_path: ./src/
