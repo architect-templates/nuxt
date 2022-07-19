@@ -15,9 +15,8 @@ services:
   app:
     build:
       context: ./
-      ${{ if architect.environment == 'local' }}:
-        args:
-          DEBUG: 'true'
+      args:
+        NODE_ENV: production
     environment:
       BASE_URL: ${{ ingresses.app.url }}
       APP_NAME: ${{ secrets.APP_NAME }}
@@ -27,8 +26,11 @@ services:
       command: curl --fail localhost:3000
       interval: 30s
       failure_threshold: 3
-    ${{ if architect.environment == 'local' }}:
+    debug:
       command: npm run dev
+      build:
+        args:
+          NODE_ENV: development
       volumes:
         src:
           host_path: ./src/
