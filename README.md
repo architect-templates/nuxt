@@ -38,7 +38,7 @@ $ architect link .
 $ architect dev .
 ```
 
-Once the deploy has completed, you can reach your new service by going to http://app.arc.localhost/.
+Once the deploy has completed, you can reach your new service by going to https://app.localhost.architect.sh/.
 
 ## Larger projects
 
