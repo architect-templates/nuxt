@@ -17,11 +17,13 @@ const config = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/architect-bot.png' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '@/assets/css/main.css'
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -41,22 +43,45 @@ const config = {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    debug: false,
+    proxy: false,
+    baseURL: process.env.APP_API_ADDR
+  },
+
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  // // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    treeShake: false,
+    defaultAssets: true,
+    treeShake: true,
     theme: {
+      dark: false,
       themes: {
         light: {
-          background: '#EFF3F9',
+          primary: '#225560', // Slate blue
+          secondary: '#225560', // Slate blue
+          info: '#D7E9F2', // Polo blue
+          warning: '#FDF07F', // Sunflower
+          error: '#FF5252',
+          success: '#55CB64', // Reliable green
+          background: '#F4F4F3',
+          neutral: '#F2D7E7', // Frosted pink
         },
       },
     },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    // // extend(config) {
+    // //   config.optimization.minimize = false;
+    // // },
+    // extractCSS: false,
+    // splitChunks: {
+    //   layouts: true
+    // }
+  },
 };
 
 export default config;

@@ -6,6 +6,9 @@ keywords:
   - jsx
   - tsx
 
+dependencies:
+  node-rest-api: latest
+
 secrets:
   APP_NAME:
     description: Name of the application to use in page metadata
@@ -20,6 +23,7 @@ services:
     environment:
       BASE_URL: ${{ ingresses.app.url }}
       APP_NAME: ${{ secrets.APP_NAME }}
+      APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
     interfaces:
       main: 3000
     liveness_probe:
