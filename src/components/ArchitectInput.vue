@@ -19,9 +19,7 @@
             </label>
             <input 
                 placeholder="Rating 1-5" 
-                type="number" 
-                id="forRating" 
-                name="forRating"
+                type="number"
                 class="form-control" 
                 value=""
                 min="1"

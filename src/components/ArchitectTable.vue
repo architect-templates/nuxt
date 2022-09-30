@@ -2,7 +2,7 @@
 <template>
     <div>
         <p v-if="$fetchState.pending">Loading....</p>
-        <p v-else-if="$fetchState.error">Error while fetching movies</p>
+        <p v-else-if="$fetchState.error || !movies[0]">No movies found</p>
         <table class="table table-striped table-bordered" v-else>
             <thead>
                 <tr>
@@ -26,11 +26,9 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class ArchitectTable extends Vue {
     movies: any;
-
+    
     async fetch() {
-      this.movies = await fetch(
-        'https://api.localhost.architect.sh/'
-      ).then(res => res.json())
+        this.movies = await this.$axios.$get('items')
     }
 }
 </script>

@@ -73,15 +73,7 @@ const config = {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-    // // extend(config) {
-    // //   config.optimization.minimize = false;
-    // // },
-    // extractCSS: false,
-    // splitChunks: {
-    //   layouts: true
-    // }
-  },
+  build: {},
 };
 
 export default config;
