@@ -31,14 +31,23 @@ In this example, we've written a component spec (the `architect.yml` file) that 
 $ git clone https://github.com/architect-templates/nuxt.git
 $ cd ./nuxt
 
-# Register the component to the local registry
-$ architect link .
-
 # Deploy locally using the dev command
-$ architect dev .
+$ architect dev architect.yml
 ```
 
 Once the deploy has completed, you can reach your new service by going to https://app.localhost.architect.sh/.
+
+## Deploying to the Cloud
+
+Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to
+[sign up for a free account](https://cloud.architect.io/signup).
+
+You can then [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud) by running the command below. Note that “example-environment” is the free environment that is created with your Architect account.
+
+```sh
+# Deploy to Architect Cloud
+$ architect deploy architect.yml -e example-environment
+```
 
 ## Larger projects
 
