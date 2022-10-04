@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",
-    "@types/node": "^18.7.18",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
     "nuxt-property-decorator": "^2.9.1",

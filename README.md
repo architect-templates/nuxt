@@ -14,7 +14,7 @@
 
 # Nuxt.js TSX starter project
 
-Nuxt and Vue are great for heavy web applications, but many largely favor React due to JSX. This app is set up in a way to get the SSR support from Nuxt while writing templates using JSX by using a combination of [first class support from Vue](https://vuejs.org/v2/guide/render-function.html#JSX) and [some clever babel presents](https://github.com/vuejs/jsx)! The usage of JSX allows for further benefit from Typescript and type checking inside template logic to develop faster.
+Nuxt and Vue are great for heavy web applications, but many largely favor Nuxt due to JSX. This app is set up in a way to get the SSR support from Nuxt while writing templates using JSX by using a combination of [first class support from Vue](https://vuejs.org/v2/guide/render-function.html#JSX) and [some clever babel presents](https://github.com/vuejs/jsx)! The usage of JSX allows for further benefit from Typescript and type checking inside template logic to develop faster.
 
 In this example, we've written a component spec (the `architect.yml` file) that defines a component to run a Nuxt based web application.
 
@@ -47,7 +47,7 @@ within the same `architect.yml` file, allowing
 reuse of your components.
 
 Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration)
-before starting the React application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling
+before starting the Nuxt application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling
 down a Component that has been registered in Architect Cloud.
 
 ```sh
@@ -77,9 +77,9 @@ $ architect dev .
 ## Deploying to the Cloud
 
 Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to
-[sign up for a free account](https://auth.architect.io/u/signup?state=hKFo2SAtSnhOdXljdy1nelBHb2NlajNhZkkybTlLOEJHcWRFeaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFNCNEZUUFBHaWpBdlA3UVlVV0xFNk1rQVJvUHBzdF9Bo2NpZNkgbElwVzlmcTlJRlFCQmpUZ2xsaE42RUkwMVRYTWhSVm0).
+[sign up for a free account](https://cloud.architect.io/signup).
 
-You can then [register each component](https://docs.architect.io/getting-started/?_ga=2.19805311.635236263.1652126693-1328677302.1650395826#register-a-component)
+You can then [register each component](https://docs.architect.io/getting-started/introduction/#register-a-component)
 to your free environment and [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud).
 
 To do this, run the following commands.
@@ -91,10 +91,10 @@ the `<environment-name>` to deploy to the free environment that is created when 
 $ cd ../node-rest-api
 $ architect register . --tag latest --account <account-name>
 
-# Register and tag the react component with Architect Cloud's component registry
+# Register and tag the nuxt component with Architect Cloud's component registry
 $ cd ../nuxt
 $ architect register . --tag latest --account <account-name>
 
 # Deploy to Architect Cloud
-$ architect deploy react -a <account-name> -e <environment-name>
+$ architect deploy nuxt -a <account-name> -e <environment-name>
 ```
