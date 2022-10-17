@@ -99,7 +99,8 @@ html {
   }
   
   #card-header {
-    display: flex;
+    display: inline;
+    text-align: center;
     background-color: none !important;
     padding-bottom: 0.5rem !important;
   }
