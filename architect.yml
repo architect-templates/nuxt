@@ -21,11 +21,14 @@ services:
       args:
         NODE_ENV: production
     environment:
-      BASE_URL: ${{ ingresses.app.url }}
+      BASE_URL: ${{ services.app.interfaces.main.ingress.url }}
       APP_NAME: ${{ secrets.APP_NAME }}
       APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
     interfaces:
-      main: 3000
+      main:
+        port: 3000
+        ingress:
+          subdomain: app
     liveness_probe:
       command: curl --fail localhost:3000
       interval: 30s
@@ -39,10 +42,3 @@ services:
         src:
           host_path: ./src/
           mount_path: /app/src/
-
-interfaces:
-  app:
-    url: ${{ services.app.interfaces.main.url }}
-    description: Exposes the webapp to outside consumers
-    ingress:
-      subdomain: app
