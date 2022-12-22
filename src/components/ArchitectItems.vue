@@ -34,24 +34,24 @@
       </button>
     </div>
 
-    <div>
-    <p v-if="loading_movies">Loading....</p>
-    <p v-else-if="!movies.length">No movies found</p>
-    <table class="table table-striped table-bordered" v-else>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(movie, index) in movies" :key="index">
-          <td>{{ movie.name }}</td>
-          <td>{{ movie.rating }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="mt-4">
+      <p v-if="loading_movies">Loading....</p>
+      <p v-else-if="!movies.length">No movies found</p>
+      <table v-else class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(movie, index) in movies" :key="index">
+            <td>{{ movie.name }}</td>
+            <td>{{ movie.rating }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </v-container>
 </template>
 
@@ -64,20 +64,19 @@ export default class ArchitectItems extends Vue {
   movie_rating: string | null = null;
 
   movies: { name: string, rating: string }[] = [];
-  loading_movies: boolean = false;
+  loading_movies: boolean = true;
 
-  async mounted() { // TODO: change to asyncData?
-    this.loading_movies = true;
+  async mounted() {
     this.movies = await this.$axios.$get('items');
     this.loading_movies = false;
   }
 
-  sendData() {
+  async sendData() {
     const movie = {
       name: this.movie_name,
       rating: this.movie_rating!,
     };
-    this.$axios.$post('items', movie);
+    await this.$axios.$post('items', movie);
     this.movies.push(movie);
     this.movie_name = '';
     this.movie_rating = '';

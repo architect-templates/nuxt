@@ -3,19 +3,19 @@
     <v-main>
       <v-container>
         <v-card outlined>
-          <v-card-title>{{ error }}</v-card-title>
+          <v-card-title>{{ rendered_error }}</v-card-title>
         </v-card>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-// export interface RenderedError {
-//   statusCode: number;
-//   message?: string;
-// }
+export interface ErrorObject {
+  statusCode: number;
+  message?: string;
+}
 
 @Component
 export default class ErrorLayout extends Vue {
@@ -23,9 +23,9 @@ export default class ErrorLayout extends Vue {
     type: Object,
     required: false
   })
-  error;//?: RenderedError;
+  error?: ErrorObject;
 
-  rendered_error;
+  rendered_error: string = '';
 
   mounted() {
     this.rendered_error = this.error?.statusCode === 404

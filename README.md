@@ -12,11 +12,9 @@
 
 ---
 
-# Nuxt.js TSX starter project
+# Nuxt.js starter project
 
-Nuxt and Vue are great for heavy web applications, but many largely favor Nuxt due to JSX. This app is set up in a way to get the SSR support from Nuxt while writing templates using JSX by using a combination of [first class support from Vue](https://vuejs.org/v2/guide/render-function.html#JSX) and [some clever babel presents](https://github.com/vuejs/jsx)! The usage of JSX allows for further benefit from Typescript and type checking inside template logic to develop faster.
-
-In this example, we've written a component spec (the `architect.yml` file) that defines a component to run a Nuxt based web application.
+In this example, we've written an Architect component spec (the `architect.yml` file) that defines a component to run a [Nuxt](https://nuxtjs.org/)-based web application.
 
 In the [`architect.yml`](//docs.architect.io/components/architect-yml/n) file for this project, we describe the Nuxt application as
 a [service](https://docs.architect.io/components/services/) and connect it to a

@@ -9,7 +9,7 @@
         <ul>
           <li>Check out Hot-reloading</li>
           <ul>
-            <li>Go to <kbd class="cmp_input">nuxt/src/components/index.vue</kbd> in your project folder and open it.</li>
+            <li>Go to <kbd class="cmp_input">nuxt/src/pages/index.vue</kbd> in your project folder and open it.</li>
             <li>Update the subtitle <kbd class="cmp_input">“Favorite Movies”</kbd> to <kbd class="cmp_input">“&lt;Your name&gt;’s Favorite Movies”</kbd></li>
             <li>The app will automatically apply the new changes on save.</li>
             <li>For additional information, check out our <a target="_blank" href="https://docs.architect.io/">docs</a>.</li>
