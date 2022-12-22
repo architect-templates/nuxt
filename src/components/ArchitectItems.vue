@@ -1,0 +1,86 @@
+<template>
+  <v-container>
+    <div class="user_inputs">
+      <label for="formName"
+        class="form-label">
+        Movie Title
+      </label>
+      <input
+        placeholder="Movie Title"
+        type="text"
+        class="form-control"
+        maxlength="80"
+        v-model="movie_name"
+      >
+    </div>
+    <div class="user_inputs">
+      <label for="forRating"
+        class="form-label">
+        Rating
+      </label>
+      <input
+        placeholder="Rating 1-5"
+        type="number"
+        class="form-control"
+        value=""
+        min="1"
+        max="5"
+        v-model="movie_rating"
+      >
+    </div>
+    <div class="d-grid gap-2">
+      <button @click="sendData">
+        Submit
+      </button>
+    </div>
+
+    <div>
+    <p v-if="loading_movies">Loading....</p>
+    <p v-else-if="!movies.length">No movies found</p>
+    <table class="table table-striped table-bordered" v-else>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(movie, index) in movies" :key="index">
+          <td>{{ movie.name }}</td>
+          <td>{{ movie.rating }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </v-container>
+</template>
+
+<script lang="ts">
+import { Vue, Component } from 'nuxt-property-decorator';
+
+@Component
+export default class ArchitectItems extends Vue {
+  movie_name = '';
+  movie_rating: string | null = null;
+
+  movies: { name: string, rating: string }[] = [];
+  loading_movies: boolean = false;
+
+  async mounted() { // TODO: change to asyncData?
+    this.loading_movies = true;
+    this.movies = await this.$axios.$get('items');
+    this.loading_movies = false;
+  }
+
+  sendData() {
+    const movie = {
+      name: this.movie_name,
+      rating: this.movie_rating!,
+    };
+    this.$axios.$post('items', movie);
+    this.movies.push(movie);
+    this.movie_name = '';
+    this.movie_rating = '';
+  }
+}
+</script>

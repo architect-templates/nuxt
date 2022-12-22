@@ -3,15 +3,18 @@ html {
     font-family: Arimo;
     scroll-behavior: smooth;
     display: block;
-  
-    background: url('~/assets/css/background.svg') no-repeat center center fixed;
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    
+
   }
-  
+
+  main {
+    background: url('~/assets/css/background.svg') no-repeat center center fixed;
+  }
+
   body {
     margin: 0;
     height: 100%;
@@ -22,20 +25,20 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  
+
   table {
     --bs-table-bg: white !important;
   }
-  
+
   div {
     display: block;
   }
-  
+
   p {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -45,7 +48,7 @@ html {
     word-wrap: normal;
     text-align: -webkit-center;
   }
-  
+
   h1 {
     font-size: calc(1.375rem + 1.5vw);
     margin-top: 0;
@@ -54,12 +57,12 @@ html {
     line-height: 1.2;
     text-align: center;
   }
-  
+
   h4 {
     font-size: 1.5rem;
     margin: 0 0 0.5em 0;
   }
-  
+
   .container {
     padding: 1rem !important;
     margin-top: 1.5rem !important;
@@ -67,14 +70,14 @@ html {
     margin-left: auto;
     max-width: 85%;
   }
-  
+
   .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     width: 75%;
     background-color: #C8EECD !important;
     margin: 30px auto 0 auto;
   }
-  
+
   .card p {
     text-align: left;
   }
@@ -83,12 +86,12 @@ html {
     margin-left: 0;
     padding-left: 40px;
   }
-  
+
   li {
     padding: 2px;
     line-height: 1.2rem;
   }
-  
+
   .card-container {
     padding: 1rem !important;
     text-align: left;
@@ -97,14 +100,14 @@ html {
   .card-content {
     padding: 1px 1px 1px 1px !important;
   }
-  
+
   #card-header {
     display: inline;
     text-align: center;
     background-color: none !important;
     padding-bottom: 0.5rem !important;
   }
-  
+
   .cmp_input {
     padding: 0.2rem 0.4rem;
     font-size: 0.875em;
@@ -116,18 +119,18 @@ html {
     box-sizing: border-box;
     font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
   }
-  
+
   form {
     text-align: left;
     display: block;
     margin-top: 0.5em;
     margin-bottom: 1em;
   }
-  
+
   .user_inputs {
     margin-bottom: 1rem;
   }
-  
+
   .form-label {
     padding-top: calc(0.5rem + 1px);
     padding-bottom: calc(0.5rem + 1px);
@@ -139,7 +142,7 @@ html {
     display: inline-block;
     cursor: default;
   }
-  
+
   input {
     display: block;
     box-sizing: border-box;
@@ -156,9 +159,9 @@ html {
     border-radius: 0.25rem !important;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }
-  
+
   button {
-    background-color: rgb(34, 85, 96) !important; 
+    background-color: rgb(34, 85, 96) !important;
     border: none !important;
     color: #FFF !important;
     cursor: pointer;
@@ -170,13 +173,13 @@ html {
     display: inline-block;
     line-height: 1.5;
     font-weight: 400 !important;
-    transition: color .15s 
-      ease-in-out,background-color 
-      .15s ease-in-out,border-color 
-      .15s ease-in-out,box-shadow 
-      .15s ease-in-out;  
+    transition: color .15s
+      ease-in-out,background-color
+      .15s ease-in-out,border-color
+      .15s ease-in-out,box-shadow
+      .15s ease-in-out;
   }
-  
+
   table {
     border: 1px solid #dee2e6;
     border-collapse: collapse;
@@ -185,22 +188,21 @@ html {
     background-color: #FFF;
     color: #212529
   }
-  
+
   tbody tr:nth-child(odd) {
     background-color: #F2F2F2;
   }
-  
+
   th {
     border-bottom: 2px solid #212529;
   }
-  
+
   th, td {
     padding: 8px;
     border-left: 1px solid #dee2e6;
   }
-  
+
   @font-face {
     font-family: Arimo;
     src: url("https://fonts.googleapis.com/css2?family=Arimo");
   }
-  

@@ -17,7 +17,7 @@ const config = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/png', href: '/architect-bot.png' }],
+    link: [{ rel: 'icon', type: 'image/png', href: '/architect-logo.png' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -48,7 +48,6 @@ const config = {
     proxy: false,
     baseURL: process.env.APP_API_ADDR
   },
-
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   // // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

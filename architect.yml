@@ -21,18 +21,17 @@ services:
       args:
         NODE_ENV: production
     environment:
-      BASE_URL: ${{ services.app.interfaces.main.ingress.url }}
       APP_NAME: ${{ secrets.APP_NAME }}
-      APP_API_ADDR: ${{ dependencies['node-rest-api'].ingresses.api.url }}
+      APP_API_ADDR: ${{ dependencies['node-rest-api'].services.api.interfaces.main.ingress.url }}
     interfaces:
       main:
         port: 3000
         ingress:
           subdomain: app
-    liveness_probe:
-      command: curl --fail localhost:3000
-      interval: 30s
-      failure_threshold: 3
+    # liveness_probe:
+    #   command: curl --fail localhost:3000
+    #   interval: 30s
+    #   failure_threshold: 3
     debug:
       command: npm run dev
       build:
