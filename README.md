@@ -72,10 +72,6 @@ $ cd ./nuxt
 # Deploy locally using the dev command
 $ architect dev architect.yml
 ```
-## Deploying to the Cloud
-
-Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to
-[sign up for a free account](https://cloud.architect.io/signup).
 
 ## Deploying to the Cloud
 
