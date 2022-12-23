@@ -1,10 +1,9 @@
 name: nuxt
-description: A starter project showing how to make use of JSX with Typescript in Nuxt.js
+description: A starter project showing how to make use of Typescript in Nuxt.js
 keywords:
   - nuxt.js
   - typescript
-  - jsx
-  - tsx
+  - vue
 
 dependencies:
   node-rest-api: latest
