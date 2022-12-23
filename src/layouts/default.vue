@@ -6,9 +6,8 @@
   </v-app>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import '~/assets/css/main.css';
 
 @Component
 export default class DefaultLayout extends Vue {}

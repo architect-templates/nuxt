@@ -67,7 +67,7 @@ export default class ArchitectItems extends Vue {
   loading_movies: boolean = true;
 
   async mounted() {
-    this.movies = await this.$axios.$get('items');
+    this.movies = await this.$axios.$get('/items');
     this.loading_movies = false;
   }
 
@@ -76,7 +76,7 @@ export default class ArchitectItems extends Vue {
       name: this.movie_name,
       rating: this.movie_rating!,
     };
-    await this.$axios.$post('items', movie);
+    await this.$axios.$post('/items', movie);
     this.movies.push(movie);
     this.movie_name = '';
     this.movie_rating = '';

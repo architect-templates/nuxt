@@ -11,17 +11,18 @@ dependencies:
 secrets:
   APP_NAME:
     description: Name of the application to use in page metadata
-    default: Nuxt TSX Starter
+    default: Nuxt Starter
 
 services:
   app:
+    command: npm run start
     build:
       context: ./
       args:
         NODE_ENV: production
     environment:
       APP_NAME: ${{ secrets.APP_NAME }}
-      APP_API_ADDR: ${{ dependencies['node-rest-api'].services.api.interfaces.main.ingress.url }}
+      APP_API_ADDR: ${{ dependencies['node-rest-api'].services.api.interfaces.main.url }}
     interfaces:
       main:
         port: 3000

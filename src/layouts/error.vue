@@ -36,20 +36,3 @@ export default class ErrorLayout extends Vue {
   }
 }
 </script>
-
-
-
-
-  render() {
-    const theme = this.$vuetify.theme.currentTheme;
-    const error = this.error?.statusCode === 404
-      ? '404 Not Found'
-      : this.error?.message
-        ? this.error.message
-        : 'An error occurred';
-
-    return (
-
-    );
-  }
-}

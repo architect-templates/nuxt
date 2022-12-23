@@ -7,7 +7,6 @@ const config = {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: `%s - ${process.env.APP_NAME}`,
     title: process.env.APP_NAME,
     htmlAttrs: {
       lang: 'en',
@@ -45,8 +44,11 @@ const config = {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     debug: false,
-    proxy: false,
-    baseURL: process.env.APP_API_ADDR
+    proxy: true,
+    prefix: '/api/',
+  },
+  proxy: {
+    '/api/': { changeOrigin: true, target: process.env.APP_API_ADDR, pathRewrite: { '^/api/': '' } },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
