@@ -37,7 +37,7 @@ services:
         port: 3000
         # ingresses are used to expose the application to the gateway, allowing
         #   other services and dependencies to connect to it.
-        #   For more info - https://docs.architect.io/components/interfaces/
+        #   For more info - https://docs.architect.io/components/ingress-rules/
         ingress:
           subdomain: app
     # The liveness_probe makes sure the application is healthy - if not, it will re-start the application
