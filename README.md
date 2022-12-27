@@ -16,21 +16,14 @@
 
 In this example, we've written an Architect component spec (the `architect.yml` file) that defines a component to run a [Nuxt](https://nuxtjs.org/)-based web application.
 
-In the [`architect.yml`](//docs.architect.io/components/architect-yml/n) file for this project, we describe the Nuxt application as
-a [service](https://docs.architect.io/components/services/) and connect it to a
-[Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/).
-We also leverage Architect's [service referencing syntax](//docs.architect.io/components/service-discovery/#service-referencing-syntax)
-to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
+In the [`architect.yml`](//docs.architect.io/components/architect-yml/) file for this project, we describe the Nuxt application as a [service](https://docs.architect.io/components/services/) and connect it to a [Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/). We also leverage Architect's [service referencing syntax](//docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
 
 [Learn more about the architect.yml file](//docs.architect.io/components/architect-yml/)
 
 ## Using the Nuxt App
-This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api)
-REST API for its backend, but you can modify the `architect.yml` file to connect to any REST API backend that has been registered to your account as an
-Architect Component.
+This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) REST API for its backend, but you can modify the `architect.yml` file to connect to any REST API backend that has been registered to your account as an Architect Component.
 
-Once this application is running, you will be able to submit your favorite films, rate them, and see the list
-of all the films and ratings that have been submitted through your application.
+Once this application is running, you will be able to submit your favorite films, rate them, and see the list of all the films and ratings that have been submitted through your application.
 
 ![Screenshot](./screenshot.png)
 
@@ -38,9 +31,7 @@ of all the films and ratings that have been submitted through your application.
 Before you can run this example application, you will need to install the [Architect CLI](https://github.com/architect-team/architect-cli).
 
 ## Running Locally
-The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment,
-from local development all the way to production. Follow these steps to clone this repository and run the application
-locally.
+The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment, from local development all the way to production. Follow these steps to clone this repository and run the application locally.
 
 Once the deployment has completed, you can reach your new service by going to https://app.localhost.architect.sh.
 
@@ -55,8 +46,7 @@ $ architect dev architect.yml
 
 ## Deploying to the Cloud
 
-Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to
-[sign up for a free account](https://cloud.architect.io/signup).
+Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to [sign up for a free account](https://cloud.architect.io/signup).
 
 You can then [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud) by running the command below. Note that “example-environment” is the free environment that is created with your Architect account.
 
@@ -67,7 +57,7 @@ $ architect deploy architect.yml -e example-environment
 
 ---
 # Additional Learning
-After you feel comfortable deploying a component with Architect, feel free to check out the powerful features we've added into this component.
+After you feel comfortable deploying with Architect, check out the powerful features we've added into this component!
 
 Additional features within this component:
 * [Adding a dependency](#adding-a-dependency)
@@ -78,12 +68,12 @@ Using a microservice framework allows you to decouple an application and allevia
 
 This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) REST API as a [dependency](https://docs.architect.io/components/dependencies/), but you can modify the `architect.yml` file to connect to any REST API backend as an Architect Component.
 
-We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
+We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local development all the way through to production!
 
 ## Registering Dependencies
 Since this application uses the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) as an external dependency, packaged into an independent Architect Component, you will need to clone that repository as well as this repository. Dependencies allow you to package the parts of your application stack independently rather than declaring them as services within the same `architect.yml` file, allowing reuse of your components.
 
-Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration) before starting the React application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling down a Component that has been registered in Architect Cloud.
+Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration) before starting the Nuxt application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling down a component that has been registered to the Architect Cloud.
 
 ```sh
 # Clone the Node.js Starter Project repository,
@@ -105,8 +95,7 @@ dependencies:
   node-rest-api: latest
 ```
 
-Uncomment line 33 of the `architect.yml` file, then save it.
-This line provides the address of the `node-rest-api` depdendency as an environment variable for the Nuxt service. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
+Uncomment line 33 of the `architect.yml` file, then save it. This line provides the address of the `node-rest-api` depdendency as an environment variable for the Nuxt service. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
 
 ```yml
 environment:
