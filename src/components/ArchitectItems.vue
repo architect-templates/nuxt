@@ -1,7 +1,8 @@
 <template>
   <v-container>
+    <h2>Favorite movies</h2>
     <div class="user_inputs">
-      <label for="formName"
+      <label
         class="form-label">
         Movie Title
       </label>
@@ -14,7 +15,7 @@
       >
     </div>
     <div class="user_inputs">
-      <label for="forRating"
+      <label
         class="form-label">
         Rating
       </label>
