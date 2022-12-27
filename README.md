@@ -37,26 +37,6 @@ of all the films and ratings that have been submitted through your application.
 ## Requirements
 Before you can run this example application, you will need to install the [Architect CLI](https://github.com/architect-team/architect-cli).
 
-## Registering Dependencies
-Since this application uses the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) as an external
-dependency, packaged into an independent Architect Component, you will need to clone that repository as well as this repository.
-Dependencies allow you to package the parts of your application stack independently rather than declaring them as services
-within the same `architect.yml` file, allowing
-reuse of your components.
-
-Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration)
-before starting the Nuxt application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling
-down a Component that has been registered in Architect Cloud.
-
-```sh
-# Clone the Node.js Starter Project repository,
-# Navigate to the repository's top-level directory, and link the project
-$ git clone git@github.com:architect-templates/node-rest-api.git
-$ cd ./node-rest-api
-$ architect link .
-$ cd ../
-```
-
 ## Running Locally
 The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment,
 from local development all the way to production. Follow these steps to clone this repository and run the application
