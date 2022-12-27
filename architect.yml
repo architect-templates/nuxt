@@ -5,6 +5,8 @@ keywords:
   - typescript
   - vue
 
+## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
+##   then uncomment the two lines below and uncomment line 35 (APP_API_ADDR)
 # dependencies:
 #   node-rest-api: latest
 

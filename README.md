@@ -88,14 +88,14 @@ After linking, some sections of the `architect.yml` file and the application c
 
 ### Update the architect.yml file
 
-Uncomment lines 8 and 9 of the architect.yml file. These lines let Architect know that the `nuxt` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
+Uncomment lines 10 and 11 of the architect.yml file. These lines let Architect know that the `nuxt` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
 
 ```yml
 dependencies:
   node-rest-api: latest
 ```
 
-Uncomment line 33 of the `architect.yml` file, then save it. This line provides the address of the `node-rest-api` depdendency as an environment variable for the Nuxt service. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
+Uncomment line 35 of the `architect.yml` file, then save it. This line provides the address of the `node-rest-api` depdendency as an environment variable for the Nuxt service. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
 
 ```yml
 environment:
