@@ -5,17 +5,24 @@ keywords:
   - typescript
   - vue
 
-## Want to learn about dependencies? Follow along with "Adding a Dependency" in the README
-##   then uncomment the two lines below and uncomment line 35 (APP_API_ADDR)
-# dependencies:
-#   node-rest-api: latest
-
 # Add secrets to be used by different services. For more information:
 # https://docs.architect.io/deployments/secrets/
 secrets:
-  APP_NAME:
-    description: Name of the application to use in page metadata
-    default: Nuxt Starter
+  db_user:
+    description: Root user to assign to the component's DB
+    default: architect
+  db_pass:
+    description: Root password to assign to the component's DB
+    default: secret
+  db_name:
+    description: Name of the DB the component will store content in
+    default: api-db
+  db_port:
+    description: Port for the db
+    default: 5432
+  api_port:
+    description: Port for api
+    default: 8080
 
 # Below are the configured services for the NuxtJS component. Note that the actual
 # NuxtJS application we're working on is defined as a service on line 21
@@ -31,8 +38,7 @@ services:
         NODE_ENV: production
     # Set environment variables for your application here
     environment:
-      APP_NAME: ${{ secrets.APP_NAME }}
-      # APP_API_ADDR: ${{ dependencies['node-rest-api'].services.api.interfaces.main.url }}
+      APP_API_ADDR: ${{ services.api.interfaces.http.ingress.url }}
     # Main interface port and subdomain of the service
     interfaces:
       main:
@@ -62,3 +68,29 @@ services:
           host_path: ./src/
           # The `WORKDIR` defined in the Dockerfile (/app) + name of source code directory (/src)
           mount_path: /app/src/
+  api-db:
+    image: postgres:12
+    interfaces:
+      database:
+        port: ${{ secrets.db_port }}
+        protocol: postgresql
+    liveness_probe:
+      command: pg_isready -d ${{ secrets.db_name }} -U ${{ secrets.db_user }}
+      interval: 10s
+      failure_threshold: 3
+    environment:
+      POSTGRES_USER: ${{ secrets.db_user }}
+      POSTGRES_PASSWORD: ${{ secrets.db_pass }}
+      POSTGRES_DB: ${{ secrets.db_name }}
+  api:
+    image: registry.gitlab.com/architect-io/docker-files/sample-backend:latest
+    interfaces:
+      http:
+        port: ${{ secrets.api_port }}
+        ingress:
+          subdomain: api
+    environment:
+      DB_ADDR: ${{ services.api-db.interfaces.database.url }}/${{ secrets.db_name }}
+      DB_USER: ${{ secrets.db_user }}
+      DB_PASS: ${{ secrets.db_pass }}
+      PORT: ${{ secrets.api_port }}
