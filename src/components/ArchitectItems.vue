@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <h1>Favorite Movie</h1>
     <v-row justify="center">
       <v-col cols="3">
         <input
