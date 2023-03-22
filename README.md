@@ -12,108 +12,111 @@
 
 ---
 
-# Nuxt.js starter project
+# Nuxt Starter Project
+[Nuxt](https://nuxtjs.org/) is a popular JavaScript framework for building frontend user interfaces for web applications.
+This project is an example application running Nuxt and packaged into an Architect component.
 
-In this example, we've written an Architect component spec (the `architect.yml` file) that defines a component to run a [Nuxt](https://nuxtjs.org/)-based web application.
+This starter application will show how easy it is to deploy an application both locally and in a remote environment.
 
-In the [`architect.yml`](//docs.architect.io/components/architect-yml/) file for this project, we describe the Nuxt application as a [service](https://docs.architect.io/components/services/) and connect it to a [Node.js REST API](https://github.com/architect-templates/node-rest-api) as a [dependency](https://docs.architect.io/components/dependencies/). We also leverage Architect's [service referencing syntax](//docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local dev all the way through to production!
+## Pre-reqs
+* Install [Docker](https://docs.docker.com/get-docker/) and make sure it's running
+* Install the [Architect CLI](https://github.com/architect-team/architect-cli)
+* [Sign up for a free Architect account](https://cloud.architect.io/signup)
 
-[Learn more about the architect.yml file](//docs.architect.io/components/architect-yml/)
+## Clone the repo
+You can clone this repo yourself or use the `architect init` command to use this project.
 
-## Using the Nuxt App
-This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) REST API for its backend, but you can modify the `architect.yml` file to connect to any REST API backend that has been registered to your account as an Architect Component.
+### Use `architect init`
+You can clone this repo locally using the `architect init` command. A drop-down list of Starter Projects is
+displayed for you to select from.
 
-Once this application is running, you will be able to submit your favorite films, rate them, and see the list of all the films and ratings that have been submitted through your application.
+```bash
+%architect init
+? What is the name of your project? my-starter-project
+? Please select a framework/language for your project Nuxt
 
-![Screenshot](./screenshot.png)
+######################################
+##### Let's set up your project! #####
+######################################
 
-## Requirements
-Before you can run this example application, you will need to install the [Architect CLI](https://github.com/architect-team/architect-cli).
+Creating project directory... ✓
+Pulling down GitHub repository... ✓ nuxt
 
-## Running Locally
-The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment, from local development all the way to production. Follow these steps to clone this repository and run the application locally.
+Successfully created project my-starter-project.
 
-Once the deployment has completed, you can reach your new service by going to https://app.localhost.architect.sh.
+Your project is ready to be deployed by Architect!
+To deploy locally, run:
+  architect dev my-starter-project/architect.yml
+```
+
+```sh
+$ architect init nuxt
+$ cd ./nuxt
+```
+
+### Clone it yourself
+Run the following command to clone the repo yourself:
 
 ```sh
 # Clone the repository and navigate to this directory
 $ git clone git@github.com:architect-templates/nuxt.git
 $ cd ./nuxt
-
-# Deploy locally using the dev command
-$ architect dev architect.yml
 ```
 
-## Deploying to the Cloud
-
-Want to try deploying this to a cloud environment? Architect's got you covered there, too! It only takes a minute to [sign up for a free account](https://cloud.architect.io/signup).
-
-You can then [deploy the application](https://docs.architect.io/getting-started/introduction/#deploy-to-the-cloud) by running the command below. Note that “example-environment” is the free environment that is created with your Architect account.
-
-```sh
-# Deploy to Architect Cloud
-$ architect deploy architect.yml -e example-environment
-```
-
----
-# Additional Learning
-After you feel comfortable deploying with Architect, check out the powerful features we've added into this component!
-
-Additional features within this component:
-* [Adding a dependency](#adding-a-dependency)
-
-
-# Adding a dependency
-Using a microservice framework allows you to decouple an application and alleviate many of the problems that come with a monolithic architecture. Architect provides first class support for microservces through the use of dependencies.
-
-This example application is configured to connect to the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) REST API as a [dependency](https://docs.architect.io/components/dependencies/), but you can modify the `architect.yml` file to connect to any REST API backend as an Architect Component.
-
-We also leverage Architect's [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax) to populate network information, which allows Architect to seamlessly promote this stack from local development all the way through to production!
-
-## Registering Dependencies
-Since this application uses the [Node.js Starter Project](https://github.com/architect-templates/node-rest-api) as an external dependency, packaged into an independent Architect Component, you will need to clone that repository as well as this repository. Dependencies allow you to package the parts of your application stack independently rather than declaring them as services within the same `architect.yml` file, allowing reuse of your components.
-
-Once you have cloned the Node.js Starter Project, you will need to use the [`link` command](https://docs.architect.io/deployments/local-environments/#local-registration) before starting the Nuxt application locally. This command tells Architect to look for the source code for this dependency locally rather than pulling down a component that has been registered to the Architect Cloud.
-
-```sh
-# Clone the Node.js Starter Project repository,
-# Navigate to the repository's top-level directory, and link the project
-$ git clone git@github.com:architect-templates/node-rest-api.git
-$ cd ./node-rest-api
-$ architect link .
-$ cd ../
-```
-
-After linking, some sections of the `architect.yml` file and the application code will need to be uncommented.
-
-### Update the architect.yml file
-
-Uncomment lines 10 and 11 of the architect.yml file. These lines let Architect know that the `nuxt` component depends on the `node-rest-api`. Additionally, it tells Architect to use the latest linked version available with the `latest` tag.
-
-```yml
-dependencies:
-  node-rest-api: latest
-```
-
-Uncomment line 35 of the `architect.yml` file, then save it. This line provides the address of the `node-rest-api` depdendency as an environment variable for the Nuxt service. Everything inside of `${{}}` is part of the [service referencing syntax](https://docs.architect.io/components/service-discovery/#service-referencing-syntax).
-
-```yml
-environment:
-  APP_API_ADDR: ${{ dependencies['node-rest-api'].services.api.interfaces.main.url }}
-```
-
-### Update the application
-Navigate to `src/pages/index.vue` and uncomment lines 5. This component loads a form and table to input and display a list of your favorite movies.
-
-```vue
-<ArchitectItems />
-```
-
-## Relaunch the component
-Now that the dependency has been added, the component should be restarted to reflect the changes in the `architect.yml` file. If the app hasn't already been restarted, do so by hitting `Ctrl-C`. Then run:
+## Run Locally
+Once the repo has been cloned to your local machine, execute the following command from the `nuxt` directory to run it locally:
 
 ```sh
 $ architect dev .
 ```
 
-to see the new changes.
+When this command completes, you can reach your new application at https://app.localhost.architect.sh.
+### Make your own changes
+
+This application's `architect.yml` file contains a `debug` block that enables hot-reloading for each service
+within the component. That means you can make changes to the source code, which will automatically apply to the environment. This lets you quickly iterate and see your changes without restarting the
+application stack.
+
+Give it a try! Search inside your project for "Favorite Movie” and change this string to “Favorite Pizza.” Once you saved
+the file, you’ll see the frontend service recompiling in the logs, and then your browser window will update automatically.
+
+## Deploy to the Cloud
+Do you want to try deploying this application to a cloud environment? Architect's got you covered there, too!
+We offer free preview environments in our community cloud where you can deploy your applications
+before deploying to staging or prod. This is an excellent opportunity for testing and getting early feedback before merging
+your code. You can [configure your GitOps](https://docs.architect.io/tutorial/creating-a-component)
+to automatically deploy every PR to Architect's community cloud.
+
+### Create an environment
+
+To create a new environment on Architect's
+free cloud, run the following command:
+
+```sh
+architect environments:create my-first-environment
+```
+This command presents you with a list of Kubernetes clusters. Since you haven't added external clusters to your
+account, you should only see `architect`. Hit enter to create your environment on Architect's community cloud.
+
+```sh
+? Select a cluster (Use arrow keys or type to search)
+❯  architect
+```
+When the command completes, you should see output similar to the following:
+```sh
+%architect environments:create my-first-environment
+? Select a cluster architect
+Registering environment with Architect... done
+Environment created: https://cloud.architect.io/<account-name>/environments/my-first-environment
+```
+
+### Deploy your component
+
+You are now ready to deploy your component to your environment in Architect's community cloud. To deploy your component,
+run the following command from the `nuxt` directory:
+
+```sh
+architect deploy --account <account-name> \
+--environment my-first-environment ./architect.yml
+```
+Congrats! You've deployed your first component using Architect.

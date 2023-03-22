@@ -1,39 +1,36 @@
 <template>
   <v-container>
-    <h2>Favorite movies</h2>
-    <div class="user_inputs">
-      <label
-        class="form-label">
-        Movie Title
-      </label>
-      <input
-        placeholder="Movie Title"
-        type="text"
-        class="form-control"
-        maxlength="80"
-        v-model="movie_name"
-      >
-    </div>
-    <div class="user_inputs">
-      <label
-        class="form-label">
-        Rating
-      </label>
-      <input
-        placeholder="Rating 1-5"
-        type="number"
-        class="form-control"
-        value=""
-        min="1"
-        max="5"
-        v-model="movie_rating"
-      >
-    </div>
-    <div class="d-grid gap-2">
-      <button @click="sendData">
-        Submit
-      </button>
-    </div>
+    <h1>Favorite Movie</h1>
+    <v-row justify="center">
+      <v-col cols="3">
+        <input
+          placeholder="Movie Title"
+          type="text"
+          class="form-control"
+          maxlength="80"
+          v-model="movie_name"
+        />
+      </v-col>
+      <v-col cols="3">
+        <input
+          placeholder="Rating 1-5"
+          type="number"
+          class="form-control"
+          value=""
+          min="1"
+          max="5"
+          v-model="movie_rating"
+        />
+      </v-col>
+    </v-row>
+    <p v-if="error_message">{{ error_message }}</p>
+    <v-row justify="center">
+      <v-col cols="4">
+        <button @click="sendData">
+          Submit
+        </button>
+      </v-col>
+    </v-row>
 
     <div class="mt-4">
       <p v-if="loading_movies">Loading....</p>
@@ -63,6 +60,7 @@ import { Vue, Component } from 'nuxt-property-decorator';
 export default class ArchitectItems extends Vue {
   movie_name = '';
   movie_rating: string | null = null;
+  error_message: string | null = null;
 
   movies: { name: string, rating: string }[] = [];
   loading_movies: boolean = true;
@@ -73,14 +71,19 @@ export default class ArchitectItems extends Vue {
   }
 
   async sendData() {
+    this.error_message = null;
     const movie = {
       name: this.movie_name,
       rating: this.movie_rating!,
     };
-    await this.$axios.$post('/items', movie);
-    this.movies.push(movie);
-    this.movie_name = '';
-    this.movie_rating = '';
+    try {
+      await this.$axios.$post('/items', movie);
+      this.movies.push(movie);
+      this.movie_name = '';
+      this.movie_rating = '';
+    } catch {
+      this.error_message = 'That movie already exists in our list';
+    }
   }
 }
 </script>

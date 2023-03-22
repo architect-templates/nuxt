@@ -48,7 +48,7 @@ const config = {
     prefix: '/api/',
   },
   proxy: {
-    '/api/': { changeOrigin: true, target: process.env.APP_API_ADDR, pathRewrite: { '^/api/': '' } },
+    '/api/': { changeOrigin: true, target: process.env.APP_API_ADDR, pathRewrite: { '^/api': '' } },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
