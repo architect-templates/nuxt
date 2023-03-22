@@ -23,6 +23,7 @@
         />
       </v-col>
     </v-row>
+    <p v-if="error_message">{{ error_message }}</p>
     <v-row justify="center">
       <v-col cols="4">
         <button @click="sendData">
@@ -59,6 +60,7 @@ import { Vue, Component } from 'nuxt-property-decorator';
 export default class ArchitectItems extends Vue {
   movie_name = '';
   movie_rating: string | null = null;
+  error_message: string | null = null;
 
   movies: { name: string, rating: string }[] = [];
   loading_movies: boolean = true;
@@ -69,14 +71,19 @@ export default class ArchitectItems extends Vue {
   }
 
   async sendData() {
+    this.error_message = null;
     const movie = {
       name: this.movie_name,
       rating: this.movie_rating!,
     };
-    await this.$axios.$post('/items', movie);
-    this.movies.push(movie);
-    this.movie_name = '';
-    this.movie_rating = '';
+    try {
+      await this.$axios.$post('/items', movie);
+      this.movies.push(movie);
+      this.movie_name = '';
+      this.movie_rating = '';
+    } catch {
+      this.error_message = 'That movie already exists in our list';
+    }
   }
 }
 </script>
