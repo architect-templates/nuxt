@@ -71,13 +71,6 @@ export default class ArchitectItems extends Vue {
   }
 
   async sendData() {
-    if (!this.movie_name) {
-      this.error_message = 'A movie name is required';
-      return;
-    } else if (!this.movie_rating) {
-      this.error_message = 'A movie rating is required';
-      return;
-    }
     this.error_message = null;
 
     const movie = {
@@ -89,8 +82,12 @@ export default class ArchitectItems extends Vue {
       this.movies.push(movie);
       this.movie_name = '';
       this.movie_rating = '';
-    } catch {
-      this.error_message = 'That movie already exists in our list';
+    } catch(err) {
+      if (err.response.data?.errors?.length) {
+        this.error_message = err.response.data?.errors.map(e => e.message).join(', ');
+      } else {
+        this.error_message = 'Error submitting movie rating';
+      }
     }
   }
 }
