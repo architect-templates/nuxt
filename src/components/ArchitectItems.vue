@@ -5,7 +5,7 @@
       <v-row justify="center">
         <v-col cols="3">
           <input
-            placeholder="Movie Title"
+            placeholder="Movie Title*"
             type="text"
             class="form-control"
             maxlength="80"
@@ -15,7 +15,7 @@
         </v-col>
         <v-col cols="3">
           <input
-            placeholder="Rating 1-5"
+            placeholder="Rating 1-5*"
             type="number"
             class="form-control"
             value=""
@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component
 export default class ArchitectItems extends Vue {
@@ -86,7 +86,7 @@ export default class ArchitectItems extends Vue {
       this.movie_name = '';
       this.movie_rating = '';
     } catch {
-      this.error_message = 'That movie already exists in our list';
+      this.error_message = 'Error submitting movie rating';
     }
   }
 }
