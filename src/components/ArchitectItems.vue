@@ -23,7 +23,7 @@
         />
       </v-col>
     </v-row>
-    <p v-if="error_message">{{ error_message }}</p>
+    <p v-if="error_message" style="color: red;">{{ error_message }}</p>
     <v-row justify="center">
       <v-col cols="4">
         <button @click="sendData">
@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component
 export default class ArchitectItems extends Vue {
@@ -71,7 +71,15 @@ export default class ArchitectItems extends Vue {
   }
 
   async sendData() {
+    if (!this.movie_name) {
+      this.error_message = 'A movie name is required';
+      return;
+    } else if (!this.movie_rating) {
+      this.error_message = 'A movie rating is required';
+      return;
+    }
     this.error_message = null;
+
     const movie = {
       name: this.movie_name,
       rating: this.movie_rating!,
