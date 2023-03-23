@@ -85,8 +85,12 @@ export default class ArchitectItems extends Vue {
       this.movies.push(movie);
       this.movie_name = '';
       this.movie_rating = '';
-    } catch {
-      this.error_message = 'Error submitting movie rating';
+    } catch(err: any) {
+      if (err.response.status === 409) {
+        this.error_message = 'That movie already exists in our list';
+      } else {
+        this.error_message = 'Error submitting movie rating';
+      }
     }
   }
 }
